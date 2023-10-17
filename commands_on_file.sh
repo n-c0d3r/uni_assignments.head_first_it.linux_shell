@@ -34,14 +34,20 @@ CROSS_PLATFORM_INITTAB=/etc/inittab
 
 # /etc/inittab may be not exist on some unix or unix-like platforms
 if [ -f "$CROSS_PLATFORM_INITTAB" ]; then
-    echo ":>"
     ls -l "$CROSS_PLATFORM_INITTAB"
 else
 
     # /etc/inittab is not exist on macos, so use another sample file
     CROSS_PLATFORM_INITTAB=/System/Library/LaunchDaemons/bootps.plist
     if [ -f "$CROSS_PLATFORM_INITTAB" ]; then
-        ls -l "$CROSS_PLATFORM_INITTAB"
+      ls -l "$CROSS_PLATFORM_INITTAB"
+    else
+
+      # /etc/inittab is not exist on macos, so use another sample file
+      CROSS_PLATFORM_INITTAB=/etc/init/rc-sysinit.conf
+      if [ -f "$CROSS_PLATFORM_INITTAB" ]; then
+          ls -l "$CROSS_PLATFORM_INITTAB"
+      fi
     fi
 fi
 
