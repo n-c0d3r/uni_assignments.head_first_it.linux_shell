@@ -43,7 +43,7 @@ else
       ls -l "$CROSS_PLATFORM_INITTAB"
     else
 
-      # /etc/inittab is not exist on macos, so use another sample file
+      # /etc/inittab may not exist on ubuntu, so use another file
       CROSS_PLATFORM_INITTAB=/etc/init/rc-sysinit.conf
       if [ -f "$CROSS_PLATFORM_INITTAB" ]; then
           ls -l "$CROSS_PLATFORM_INITTAB"
